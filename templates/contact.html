@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты — {{ shop_name }}{% endblock %}
+
+{% block content %}
+
+<!-- Заголовок -->
+<section class="page-header">
+    <div class="container">
+        <h1 data-aos="fade-up">Контакты</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+            Будем рады вашему звонку или сообщению
+        </p>
+    </div>
+</section>
+
+<!-- Контакты и форма -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <!-- Контактная информация -->
+            <div class="col-lg-5 mb-4" data-aos="fade-right">
+                <h3>Свяжитесь с нами</h3>
+                <div class="contact-info mt-4">
+                    <div class="contact-item">
+                        <i class="bi bi-telephone"></i>
+                        <div>
+                            <h6>Телефон</h6>
+                            <p>{{ phone }}</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-envelope"></i>
+                        <div>
+                            <h6>Email</h6>
+                            <p>{{ email }}</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <div>
+                            <h6>Адрес</h6>
+                            <p>{{ address }}</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-clock"></i>
+                        <div>
+                            <h6>Режим работы</h6>
+                            <p>Ежедневно с 9:00 до 21:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Форма заявки -->
+            <div class="col-lg-7" data-aos="fade-left">
+                <div class="contact-form">
+                    <h3>Оставить заявку</h3>
+                    <p>Заполните форму — это демонстрация работы</p>
+
+                    <form method="POST" action="{{ url_for('contact') }}" id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Ваше имя</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Например: Анна">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email или телефон</label>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Например: anna@mail.ru">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Ваше сообщение (необязательно)</label>
+                            <textarea class="form-control" id="message" name="message" rows="3" placeholder="Опишите, какой букет вы хотите..."></textarea>
+                        </div>
+
+                        <!-- Чекбокс согласия -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreement" name="agreement">
+                            <label class="form-check-label" for="agreement">
+                                Я понимаю, что это учебный проект. Данные никуда не отправляются и не сохраняются.
+                                <a href="#" id="privacyLink" data-bs-toggle="modal" data-bs-target="#privacyModal">Подробнее</a>
+                            </label>
+                        </div>
+
+                        <!-- Кнопка отправки (неактивна без чекбокса) -->
+                        <button type="submit" class="btn btn-primary btn-lg w-100" id="submitBtn" disabled>
+                            Отправить заявку
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Скрипт для управления чекбоксом и кнопкой -->
+<script>
+    const agreement = document.getElementById('agreement');
+    const submitBtn = document.getElementById('submitBtn');
+    const privacyLink = document.getElementById('privacyLink');
+
+    // При нажатии на чекбокс — открываем модальное окно
+    agreement.addEventListener('change', function() {
+        if (this.checked) {
+            // Открываем модальное окно с политикой
+            const modal = new bootstrap.Modal(document.getElementById('privacyModal'));
+            modal.show();
+            // Делаем кнопку активной
+            submitBtn.disabled = false;
+        } else {
+            // Если галочку сняли — кнопка снова неактивна
+            submitBtn.disabled = true;
+        }
+    });
+
+    // При нажатии на "Подробнее" — тоже открываем модальное окно
+    privacyLink.addEventListener('click', function(e) {
+        // Чекбокс не меняется от клика по ссылке
+        // Модальное окно откроется само через data-bs-toggle
+    });
+</script>
+
+{% endblock %}

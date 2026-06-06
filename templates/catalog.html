@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Каталог букетов — {{ shop_name }}{% endblock %}
+
+{% block content %}
+
+<!-- Заголовок страницы -->
+<section class="page-header">
+    <div class="container">
+        <h1 data-aos="fade-up">Каталог букетов</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+            Выберите идеальный букет для любого повода
+        </p>
+    </div>
+</section>
+
+<!-- Сетка букетов -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            {% for bouquet in bouquets %}
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                <div class="bouquet-card">
+                    <div class="bouquet-image">
+                        <img src="{{ url_for('static', filename='images/' + bouquet.image) }}" alt="{{ bouquet.name }}">
+                        {% if bouquet.tag %}
+                        <span class="bouquet-tag">{{ bouquet.tag }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="bouquet-info">
+                        <h5>{{ bouquet.name }}</h5>
+                        <p class="bouquet-desc">{{ bouquet.description }}</p>
+                        <div class="bouquet-footer">
+                            <span class="bouquet-price">{{ bouquet.price }} ₽</span>
+                            <a href="{{ url_for('contact') }}" class="btn btn-sm btn-primary">Заказать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Призыв к действию -->
+<section class="section cta">
+    <div class="container text-center">
+        <h2 data-aos="fade-up">Не нашли что искали?</h2>
+        <p data-aos="fade-up" data-aos-delay="100">
+            Соберём букет по вашему желанию — просто напишите нам
+        </p>
+        <div data-aos="fade-up" data-aos-delay="200">
+            <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Оставить заявку</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

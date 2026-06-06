@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}Bloom — авторские букеты с доставкой{% endblock %}
+
+{% block content %}
+
+<!-- Hero-секция -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <h1 data-aos="fade-up" data-aos-delay="200">
+            Букеты, <br>которые говорят <br>за вас
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="400">
+            Авторские композиции из свежих цветов <br>с доставкой по Москве
+        </p>
+        <div data-aos="fade-up" data-aos-delay="600">
+            <a href="{{ url_for('catalog') }}" class="btn btn-primary btn-lg">Смотреть каталог</a>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-lg ms-3">Заказать звонок</a>
+        </div>
+    </div>
+</section>
+
+<!-- Популярные букеты -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Популярные букеты</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            То, что выбирают чаще всего
+        </p>
+        <div class="row mt-5">
+            {% for bouquet in bouquets %}
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                <div class="bouquet-card">
+                    <div class="bouquet-image">
+                        <img src="{{ url_for('static', filename='images/' + bouquet.image) }}" alt="{{ bouquet.name }}">
+                        {% if bouquet.tag %}
+                        <span class="bouquet-tag">{{ bouquet.tag }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="bouquet-info">
+                        <h5>{{ bouquet.name }}</h5>
+                        <p class="bouquet-desc">{{ bouquet.description }}</p>
+                        <div class="bouquet-footer">
+                            <span class="bouquet-price">{{ bouquet.price }} ₽</span>
+                            <a href="{{ url_for('contact') }}" class="btn btn-sm btn-primary">Заказать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4" data-aos="fade-up">
+            <a href="{{ url_for('catalog') }}" class="btn btn-outline-primary btn-lg">Весь каталог →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Почему мы -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Почему выбирают нас</h2>
+        <div class="row mt-5">
+            <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">🌸</div>
+                <h5>Свежие цветы</h5>
+                <p>Поставки каждое утро с лучших плантаций</p>
+            </div>
+            <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">🎨</div>
+                <h5>Авторский дизайн</h5>
+                <p>Каждый букет — уникальная композиция</p>
+            </div>
+            <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">🚗</div>
+                <h5>Доставка за 2 часа</h5>
+                <p>По Москве и области, бережно и вовремя</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA (призыв к действию) -->
+<section class="section cta">
+    <div class="container text-center">
+        <h2 data-aos="fade-up">Хотите особенный букет?</h2>
+        <p data-aos="fade-up" data-aos-delay="100">
+            Соберём композицию по вашему желанию — для любого повода и бюджета
+        </p>
+        <div data-aos="fade-up" data-aos-delay="200">
+            <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Оставить заявку</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

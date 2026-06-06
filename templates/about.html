@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}О нас — {{ shop_name }}{% endblock %}
+
+{% block content %}
+
+<!-- Заголовок -->
+<section class="page-header">
+    <div class="container">
+        <h1 data-aos="fade-up">О студии «Соцветие»</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+            История о любви к цветам и красоте
+        </p>
+    </div>
+</section>
+
+<!-- Контент -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4" data-aos="fade-right">
+                <img src="{{ url_for('static', filename='images/about.jpg') }}" alt="О нас"
+                    class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <h2>Наша история</h2>
+                <p>
+                    «Соцветие» начиналось с маленькой цветочной лавки в центре Москвы.
+                    Мы верили, что цветы — это не просто подарок, а способ выразить
+                    чувства без слов.
+                </p>
+                <p>
+                    За 6 лет мы выросли в студию авторских букетов. Каждая композиция
+                    создаётся вручную с любовью и вниманием к деталям.
+                </p>
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <h4>6+</h4>
+                        <p>лет опыта</p>
+                    </div>
+                    <div class="col-6">
+                        <h4>5000+</h4>
+                        <p>довольных клиентов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ценности -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Наши ценности</h2>
+        <div class="row mt-5">
+            <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">💚</div>
+                <h5>Качество</h5>
+                <p>Только свежие цветы от проверенных поставщиков</p>
+            </div>
+            <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">✨</div>
+                <h5>Креативность</h5>
+                <p>Уникальный дизайн для каждого клиента</p>
+            </div>
+            <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">🤝</div>
+                <h5>Забота</h5>
+                <p>Бережная доставка и внимание к пожеланиям</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
