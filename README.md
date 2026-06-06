@@ -1,16 +1,12 @@
-# 🌸 Bloom — сайт цветочного магазина
+# 🌸 Соцветие — сайт цветочной студии
 
 **Учебный проект для портфолио.**
 
-Современный адаптивный сайт для цветочного магазина. Построен на Flask с использованием Bootstrap 5 и AOS-анимаций.
+Современный адаптивный сайт для цветочной студии. Построен на Flask с использованием Bootstrap 5 и AOS-анимаций.
 
 ## 🌐 Демо
 
-Скриншоты сайта:
-
-![Главная страница](screenshots/home.png)
-![Каталог](screenshots/catalog.png)
-![Контакты](screenshots/contact.png)
+Сайт доступен по адресу: [socvetie.pythonanywhere.com](https://mariachernova.pythonanywhere.com/) 
 
 ## 🛠️ Технологии
 
@@ -24,8 +20,10 @@
 
 ```bash
 # Клонировать репозиторий
-git clone https://github.com/твой_ник/bloom_flowers.git
-cd bloom_flowers
+git clone https://github.com/Maria-Chernova/socvetie.git
+
+# Перейти в папку проекта
+cd socvetie
 
 # Создать виртуальное окружение
 python -m venv venv
